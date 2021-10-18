@@ -1,4 +1,4 @@
-package com.jack.bils.surveysitebackendapi1_0;
+package com.survey.site.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
