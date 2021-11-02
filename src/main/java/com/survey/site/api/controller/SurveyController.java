@@ -1,14 +1,12 @@
 package com.survey.site.api.controller;
 
-import com.survey.site.api.dto.Question;
-import com.survey.site.api.dto.Response;
+import com.survey.site.api.dto.*;
 import com.survey.site.api.service.SurveyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
@@ -27,6 +25,16 @@ public class SurveyController {
     public List<Response> getResponses(@RequestParam("surveyId") Long surveyId) {
         return surveyService.getResponsesForSurvey(surveyId);
     }
+
+    @PostMapping(value = "/createSurvey", produces = MediaType.APPLICATION_JSON_VALUE)
+    public CreateSurveyResponse createSurvey(@RequestBody DbSurvey dbSurvey) {
+        return surveyService.createSurvey(dbSurvey);
+    }
+
+//    @GetMapping("/getAllSurveys")
+//    public List<Survey> getAllSurveys() {
+//
+//    }
 
     //TODO: Make endpoint to get all surveys when user clicks on "Take Survey"
 

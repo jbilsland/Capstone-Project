@@ -10,13 +10,32 @@
     <resultMap id="response" type="com.survey.site.api.dto.Response">
         <id property="id" column="response_id"/>
         <result property="questionId" column="question_id"/>
-
+        <result property="response" column="response"/>
     </resultMap>
+
+<!--    <resultMap id="survey" type="com.survey.site.api.dto.Survey">-->
+<!--        <id property="id" column="survey_all_id"/>-->
+<!--        <result property="name" column="survey_title"/>-->
+<!--        <collection property="questions" resultMap="question" javaType="java.util.List"/>-->
+<!--    </resultMap>-->
 
     <select id="getQuestionsByTemplate" resultMap="question">
         SELECT *
         FROM questions
         WHERE template_name = #{template}
     </select>
+
+    <insert id="createSurvey">
+        INSERT INTO surveyAll(survey_title)
+        VALUES (#{title})
+
+        <selectKey resultType="Long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+<!--    <select id="getAllSurveys" resultMap="survey">-->
+
+<!--    </select>-->
 
 </mapper>
