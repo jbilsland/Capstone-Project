@@ -16,10 +16,10 @@ public class DbConfig {
     public DataSource dataSource () {
         return DataSourceBuilder.create()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
-                .url("jdbc:mysql://remotemysql.com")
+                .url("jdbc:mysql://remotemysql.com/CrqaQ6rux2")
                 .username("CrqaQ6rux2")
-                .password("XlcPAo0KfC").build();
-
+                .password("XlcPAo0KfC")
+                .build();
     }
 
     @Bean
