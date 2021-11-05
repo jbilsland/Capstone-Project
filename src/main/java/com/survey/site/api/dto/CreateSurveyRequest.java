@@ -1,13 +1,8 @@
 package com.survey.site.api.dto;
 
 public class CreateSurveyRequest {
-    private String surveyName;
+    private long id;
+    private String title;
+    private String templateName;
 
-    public String getSurveyName() {
-        return surveyName;
-    }
-
-    public void setSurveyName(String surveyName) {
-        this.surveyName = surveyName;
-    }
 }

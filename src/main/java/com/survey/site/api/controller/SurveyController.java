@@ -15,7 +15,7 @@ public class SurveyController {
     @Autowired
     private SurveyService surveyService;
 
-    @GetMapping("/getQuestionsByTemplate")
+    @GetMapping("/getQuestionsByTemplate") //Todo? get from survey id instead?
     public List<Question> getQuestions(@RequestParam("templateName") String templateName){
         LOGGER.info("Get questions for template {}", templateName);
         return surveyService.getQuestionsByTemplate(templateName);
@@ -28,7 +28,10 @@ public class SurveyController {
 
     @PostMapping(value = "/createSurvey", produces = MediaType.APPLICATION_JSON_VALUE)
     public CreateSurveyResponse createSurvey(@RequestBody DbSurvey dbSurvey) {
-        return surveyService.createSurvey(dbSurvey);
+        LOGGER.info("Creating survey with request: {}", dbSurvey);
+        CreateSurveyResponse response = surveyService.createSurvey(dbSurvey);
+        LOGGER.info("Created survey: {}", response);
+        return response;
     }
 
 //    @GetMapping("/getAllSurveys")
@@ -39,6 +42,4 @@ public class SurveyController {
     //TODO: Make endpoint to get all surveys when user clicks on "Take Survey"
 
     //TODO: Make endpoint to save user answers to questions into the responses table
-
-    //TODO: Make an endpoint to insert into suveyAll name and description
 }

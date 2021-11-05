@@ -2,7 +2,7 @@ package com.survey.site.api.dto;
 
 public class DbSurvey {
     private Long id;
-    private String title;
+    private String name;
 
     public long getId() {
         return id;
@@ -12,11 +12,11 @@ public class DbSurvey {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 }

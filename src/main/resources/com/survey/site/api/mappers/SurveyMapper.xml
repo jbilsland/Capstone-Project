@@ -13,11 +13,12 @@
         <result property="response" column="response"/>
     </resultMap>
 
-<!--    <resultMap id="survey" type="com.survey.site.api.dto.Survey">-->
-<!--        <id property="id" column="survey_all_id"/>-->
-<!--        <result property="name" column="survey_title"/>-->
-<!--        <collection property="questions" resultMap="question" javaType="java.util.List"/>-->
-<!--    </resultMap>-->
+    <resultMap id="survey" type="com.survey.site.api.dto.Survey">
+        <id property="id" column="survey_all_id"/>
+        <result property="name" column="survey_name"/>
+        <collection property="questions" resultMap="question" javaType="java.util.List"/>
+        <collection property="responses" resultMap="response" javaType="java.util.List"/>
+    </resultMap>
 
     <select id="getQuestionsByTemplate" resultMap="question">
         SELECT *
@@ -34,8 +35,15 @@
         </selectKey>
     </insert>
 
-<!--    <select id="getAllSurveys" resultMap="survey">-->
-
-<!--    </select>-->
+    <select id="getAllSurveys" resultMap="survey">
+        SELECT
+            s.survey_all_id,
+            survey_name,
+            response,
+            question
+        FROM surveyAll s
+        JOIN responses r ON r.survey_all_id = s.survey_all_id
+        JOIN questions q ON q.question_id = r.question_id;
+    </select>
 
 </mapper>
