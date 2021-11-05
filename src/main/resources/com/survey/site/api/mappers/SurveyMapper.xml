@@ -27,8 +27,8 @@
     </select>
 
     <insert id="createSurvey">
-        INSERT INTO surveyAll(survey_title)
-        VALUES (#{title})
+        INSERT INTO surveyAll(survey_name)
+        VALUES (#{name})
 
         <selectKey resultType="Long" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID()

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin //Allows UI to consume these endpoints
 public class SurveyController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SurveyController.class);
     @Autowired
