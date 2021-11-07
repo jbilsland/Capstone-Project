@@ -15,6 +15,8 @@ public interface SurveyMapper {
 
     Long createSurvey(DbSurvey dbSurvey);
 
+    List<String> getSurveyNames();
+
    // List<Survey> getAllSurveys();
 
 

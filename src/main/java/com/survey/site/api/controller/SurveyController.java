@@ -27,12 +27,18 @@ public class SurveyController {
         return surveyService.getResponsesForSurvey(surveyId);
     }
 
-    @PostMapping(value = "/createSurvey", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/createSurvey")
     public CreateSurveyResponse createSurvey(@RequestBody DbSurvey dbSurvey) {
         LOGGER.info("Creating survey with request: {}", dbSurvey);
         CreateSurveyResponse response = surveyService.createSurvey(dbSurvey);
         LOGGER.info("Created survey: {}", response);
         return response;
+    }
+
+    @GetMapping("/getALlSurveyNames")
+    public List<String> getALlSurveyNames() {
+        LOGGER.info("Retrieving all survey names");
+        return surveyService.getSurveyNames();
     }
 
 //    @GetMapping("/getAllSurveys")

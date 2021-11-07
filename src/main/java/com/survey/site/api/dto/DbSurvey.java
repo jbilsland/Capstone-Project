@@ -3,6 +3,15 @@ package com.survey.site.api.dto;
 public class DbSurvey {
     private Long id;
     private String name;
+    private String templateName;
+
+    public String getTemplateName() {
+        return templateName;
+    }
+
+    public void setTemplateName(String templateName) {
+        this.templateName = templateName;
+    }
 
     public long getId() {
         return id;

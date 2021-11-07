@@ -32,5 +32,9 @@ public class SurveyService {
         return new CreateSurveyResponse().id(dbSurvey.getId());
     }
 
+    public List<String> getSurveyNames(){
+        return mapper.getSurveyNames();
+    }
+
 
 }
