@@ -3,7 +3,6 @@ package com.survey.site.api.mappers;
 import com.survey.site.api.dto.DbSurvey;
 import com.survey.site.api.dto.Question;
 import com.survey.site.api.dto.Response;
-import com.survey.site.api.dto.Survey;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
@@ -15,9 +14,11 @@ public interface SurveyMapper {
 
     Long createSurvey(DbSurvey dbSurvey);
 
+    Long getSurveyIdFromSurveyName(String name);
+
     List<String> getSurveyNames();
 
-   // List<Survey> getAllSurveys();
+    void submitResponse(String question, String template, String response, long surveyId);
 
 
 }

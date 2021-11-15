@@ -5,8 +5,8 @@ import java.util.List;
 public class Survey {
     private int id;
     private String name;
-    private List<Question> questions;
-    private List<Response> responses;
+    private List<String> questions;
+    private List<String> responses;
 
     public int getId() {
         return id;
@@ -24,19 +24,19 @@ public class Survey {
         this.name = name;
     }
 
-    public List<Question> getQuestions() {
+    public List<String> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(List<Question> questions) {
+    public void setQuestions(List<String> questions) {
         this.questions = questions;
     }
 
-    public List<Response> getResponses() {
+    public List<String> getResponses() {
         return responses;
     }
 
-    public void setResponses(List<Response> responses) {
+    public void setResponses(List<String> responses) {
         this.responses = responses;
     }
 }

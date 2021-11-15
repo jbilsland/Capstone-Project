@@ -1,9 +1,6 @@
 package com.survey.site.api.service;
 
-import com.survey.site.api.dto.CreateSurveyResponse;
-import com.survey.site.api.dto.DbSurvey;
-import com.survey.site.api.dto.Question;
-import com.survey.site.api.dto.Response;
+import com.survey.site.api.dto.*;
 import com.survey.site.api.mappers.SurveyMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +31,22 @@ public class SurveyService {
 
     public List<String> getSurveyNames(){
         return mapper.getSurveyNames();
+    }
+
+    public void submitAnswers(SubmitAnswersRequest request) {
+        String surveyName = request.getSurveyName();
+
+        Long surveyId = mapper.getSurveyIdFromSurveyName(surveyName);
+        LOGGER.info("Found id {} for survey: {}", surveyId, surveyName);
+
+        request.getQuestionAnswerMap().forEach(
+                (question, answer) -> {
+                    LOGGER.info("Question: {}, Answer: {}", question, answer);
+                    mapper.submitResponse(question, request.getTemplateName(), answer, surveyId);
+                }
+        );
+
+        LOGGER.info("Finished saving responses");
     }
 
 

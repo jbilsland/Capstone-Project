@@ -17,7 +17,7 @@
         <id property="id" column="survey_all_id"/>
         <result property="name" column="survey_name"/>
         <collection property="questions" resultMap="question" javaType="java.util.List"/>
-        <collection property="responses" resultMap="response" javaType="java.util.List"/>
+        <collection property="responses" column="re" javaType="java.util.List"/>
     </resultMap>
 
     <select id="getQuestionsByTemplate" resultMap="question">
@@ -34,21 +34,36 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
+    
+    <select id="getSurveyIdFromSurveyName" resultType="Long">
+        SELECT survey_all_id
+        FROM surveyAll
+        WHERE survey_name = #{name}
+    </select>
+
+    <insert id="submitResponse">
+        INSERT INTO responses (question_id, response, survey_all_id)
+        VALUES
+        (
+            (
+                SELECT question_id
+                FROM questions
+                WHERE question = #{question}
+                AND template_name = #{template}
+            ),
+            #{response},
+            #{surveyId}
+        )
+    </insert>
 
     <select id="getSurveyNames" resultType="String">
         SELECT survey_name
         FROM surveyAll
     </select>
 
-    <select id="getAllSurveys" resultMap="survey">
-        SELECT
-            s.survey_all_id,
-            survey_name,
-            response,
-            question
-        FROM surveyAll s
-        JOIN responses r ON r.survey_all_id = s.survey_all_id
-        JOIN questions q ON q.question_id = r.question_id;
-    </select>
+<!--    <select id="getSurveyDetails" resultMap="survey">-->
+<!--        SELECT survey_all_id, question,-->
+
+<!--    </select>-->
 
 </mapper>

@@ -5,7 +5,6 @@ import com.survey.site.api.service.SurveyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -41,12 +40,15 @@ public class SurveyController {
         return surveyService.getSurveyNames();
     }
 
-//    @GetMapping("/getAllSurveys")
-//    public List<Survey> getAllSurveys() {
+    @PostMapping("/submitAnswers")
+    public void submitAnswers(@RequestBody SubmitAnswersRequest request) {
+        LOGGER.info("Submitting answers with request: {}", request);
+        surveyService.submitAnswers(request);
+    }
+
+//    @GetMapping("/getSurveyDetails")
+//    public Object getSurveyDetails(@RequestParam("name") String name) {
 //
 //    }
 
-    //TODO: Make endpoint to get all surveys when user clicks on "Take Survey"
-
-    //TODO: Make endpoint to save user answers to questions into the responses table
 }
