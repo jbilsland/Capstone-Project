@@ -1,6 +1,6 @@
 package com.survey.site.api.mappers;
 
-import com.survey.site.api.dto.DbSurvey;
+import com.survey.site.api.dto.create.survey.DbSurvey;
 import com.survey.site.api.dto.Question;
 import com.survey.site.api.dto.Response;
 import org.apache.ibatis.annotations.Mapper;

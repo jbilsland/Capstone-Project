@@ -1,4 +1,4 @@
-package com.survey.site.api.dto;
+package com.survey.site.api.dto.create.survey;
 
 public class DbSurvey {
     private Long id;

@@ -1,6 +1,8 @@
 package com.survey.site.api.controller;
 
 import com.survey.site.api.dto.*;
+import com.survey.site.api.dto.create.survey.CreateSurveyResponse;
+import com.survey.site.api.dto.create.survey.DbSurvey;
 import com.survey.site.api.service.SurveyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
