@@ -1,20 +1,9 @@
 package com.survey.site.api.dto;
 
-import java.util.List;
-
 public class Survey {
-    private int id;
     private String name;
-    private List<String> questions;
-    private List<String> responses;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String question;
+    private String response;
 
     public String getName() {
         return name;
@@ -24,19 +13,20 @@ public class Survey {
         this.name = name;
     }
 
-    public List<String> getQuestions() {
-        return questions;
+    public String getQuestion() {
+      return question;
     }
 
-    public void setQuestions(List<String> questions) {
-        this.questions = questions;
+    public void setQuestion(String question) {
+      this.question = question;
     }
 
-    public List<String> getResponses() {
-        return responses;
+    public String getResponse() {
+      return response;
     }
 
-    public void setResponses(List<String> responses) {
-        this.responses = responses;
+    public void setResponse(String response) {
+      this.response = response;
     }
+
 }

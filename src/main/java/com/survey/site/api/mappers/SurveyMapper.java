@@ -1,5 +1,6 @@
 package com.survey.site.api.mappers;
 
+import com.survey.site.api.dto.Survey;
 import com.survey.site.api.dto.create.survey.DbSurvey;
 import com.survey.site.api.dto.Question;
 import com.survey.site.api.dto.Response;
@@ -20,5 +21,6 @@ public interface SurveyMapper {
 
     void submitResponse(String question, String template, String response, long surveyId);
 
+    List<Survey> getSurveyDetails(String name);
 
 }

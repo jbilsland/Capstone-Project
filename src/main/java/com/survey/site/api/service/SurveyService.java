@@ -51,5 +51,9 @@ public class SurveyService {
         LOGGER.info("Finished saving responses");
     }
 
+    public List<Survey> getSurveyDetails(String surveyName) {
+        return mapper.getSurveyDetails(surveyName);
+    }
+
 
 }

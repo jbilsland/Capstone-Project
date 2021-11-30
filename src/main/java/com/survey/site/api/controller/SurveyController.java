@@ -23,11 +23,6 @@ public class SurveyController {
         return surveyService.getQuestionsByTemplate(templateName);
     }
 
-    @GetMapping("/getSurveyResponses")
-    public List<Response> getResponses(@RequestParam("surveyId") Long surveyId) {
-        return surveyService.getResponsesForSurvey(surveyId);
-    }
-
     @PostMapping(value = "/createSurvey")
     public CreateSurveyResponse createSurvey(@RequestBody DbSurvey dbSurvey) {
         LOGGER.info("Creating survey with request: {}", dbSurvey);
@@ -48,9 +43,9 @@ public class SurveyController {
         surveyService.submitAnswers(request);
     }
 
-//    @GetMapping("/getSurveyDetails")
-//    public Object getSurveyDetails(@RequestParam("name") String name) {
-//
-//    }
+    @GetMapping("/getSurveyDetails")
+    public List<Survey> getSurveyDetails(@RequestParam("name") String name) {
+        return surveyService.getSurveyDetails(name);
+    }
 
 }

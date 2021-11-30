@@ -14,10 +14,9 @@
     </resultMap>
 
     <resultMap id="survey" type="com.survey.site.api.dto.Survey">
-        <id property="id" column="survey_all_id"/>
         <result property="name" column="survey_name"/>
-        <collection property="questions" resultMap="question" javaType="java.util.List"/>
-        <collection property="responses" column="re" javaType="java.util.List"/>
+        <result property="question" column="question"/>
+        <result property="response" column="response"/>
     </resultMap>
 
     <select id="getQuestionsByTemplate" resultMap="question">
@@ -61,9 +60,12 @@
         FROM surveyAll
     </select>
 
-<!--    <select id="getSurveyDetails" resultMap="survey">-->
-<!--        SELECT survey_all_id, question,-->
-
-<!--    </select>-->
+    <select id="getSurveyDetails" resultMap="survey">
+        SELECT survey_name, question, response
+        FROM responses r
+        JOIN questions q ON r.question_id = q.question_id
+        JOIN surveyAll s ON s.survey_all_id = r.survey_all_id
+        WHERE survey_name = #{name}
+    </select>
 
 </mapper>
